@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KHD INTERIOR</title>
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #222;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    nav {
+      background: #444;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .section {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    .about {
+      max-width: 800px;
+      margin: auto;
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 300px;
+    }
+
+    .service-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .slider {
+      max-width: 90%;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slides {
+      display: flex;
+      width: 300%;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+      width: 100%;
+      flex-shrink: 0;
+    }
+
+    .slide img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .slider-buttons {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .slider-buttons button {
+      padding: 10px 15px;
+      margin: 0 5px;
+      border: none;
+      background: #444;
+      color: white;
+      cursor: pointer;
+    }
+
+    .testimonials {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .testimonial {
+      background: #fff;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      font-style: italic;
+    }
+
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    .whatsapp-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50%;
+      padding: 15px;
+      font-size: 24px;
+      text-align: center;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      text-decoration: none;
+    }
+
+    .whatsapp-button:hover {
+      background-color: #20b557;
+    }
+
+    @media (max-width: 768px) {
+      .services {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>KHD INTERIOR</h1>
+    <p>Your dream space, designed in 3D with custom elegance</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#work">Our Work</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about" class="section">
+    <h2>About Us</h2>
+    <div class="about">
+      <p>KHD INTERIOR is a Mumbai-based interior design firm offering 3D interior visualizations, custom furniture, and wall painting services. We aim to transform ordinary spaces into extraordinary environments tailored to your style and budget. Whether you're building your dream home or renovating a room, we provide creative solutions with attention to detail and personalized service.</p>
+    </div>
+  </section>
+
+  <section id="services" class="section">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="service-card">
+        <img src="https://cdn.pixabay.com/photo/2020/11/13/08/35/living-room-5734262_1280.jpg" alt="3D Interior Design">
+        <h3>3D Interior Design</h3>
+        <p>Get a realistic preview of your space before making any changes with our professional 3D design services.</p>
+      </div>
+      <div class="service-card">
+        <img src="https://cdn.pixabay.com/photo/2017/08/06/00/06/chairs-2583031_1280.jpg" alt="Custom Furniture">
+        <h3>Custom Furniture</h3>
+        <p>Tailor-made furniture pieces that reflect your style and perfectly fit your space and budget.</p>
+      </div>
+      <div class="service-card">
+        <img src="https://cdn.pixabay.com/photo/2016/11/19/14/00/painting-1834642_1280.jpg" alt="Wall Painting">
+        <h3>Wall Painting</h3>
+        <p>Express your personality with unique wall painting designs from our skilled artists at affordable prices.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="section">
+    <h2>Our Work</h2>
+    <div class="slider">
+      <div class="slides" id="slides">
+        <div class="slide">
+          <img src="https://cdn.pixabay.com/photo/2016/11/19/14/00/painting-1834642_1280.jpg" alt="Work 1">
+        </div>
+        <div class="slide">
+          <img src="https://cdn.pixabay.com/photo/2020/11/13/08/35/living-room-5734262_1280.jpg" alt="Work 2">
+        </div>
+        <div class="slide">
+          <img src="https://cdn.pixabay.com/photo/2017/08/06/00/06/chairs-2583031_1280.jpg" alt="Work 3">
+        </div>
+      </div>
+    </div>
+    <div class="slider-buttons">
+      <button onclick="moveSlide(0)">1</button>
+      <button onclick="moveSlide(1)">2</button>
+      <button onclick="moveSlide(2)">3</button>
+    </div>
+  </section>
+
+  <section id="testimonials" class="section">
+    <h2>Testimonials</h2>
+    <div class="testimonials">
+      <div class="testimonial">"KHD INTERIOR turned my house into a beautiful home. Their 3D designs made everything clear before starting. Loved their work!" – Riya M.</div>
+      <div class="testimonial">"Professional, creative, and affordable! I highly recommend their custom furniture service." – Arjun K.</div>
+      <div class="testimonial">"Amazing wall painting designs! Their team is very talented." – Sneha D.</div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>Contact Us</h2>
+    <p><strong>Email:</strong> contact@khdinterior.com</p>
+    <p><strong>Phone:</strong> +91-9876543210</p>
+    <p><strong>Location:</strong> Mumbai, India</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 KHD INTERIOR. All rights reserved.</p>
+  </footer>
+
+  <!-- WhatsApp Chat Button -->
+  <a class="whatsapp-button" href="https://wa.me/919876543210" target="_blank" title="Chat with us on WhatsApp">
+    🟢
+  </a>
+
+  <script>
+    function moveSlide(index) {
+      const slides = document.getElementById("slides");
+      slides.style.transform = `translateX(-${index * 100}%)`;
+    }
+  </script>
+
+</body>
+  </html>
+  
