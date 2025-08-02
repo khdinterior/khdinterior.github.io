@@ -1,275 +1,824 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>KHD INTERIOR</title>
-  <style>
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background-color: #f9f9f9;
-      color: #333;
-    }
-
-    header {
-      background-color: #222;
-      color: white;
-      padding: 30px 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
-    }
-
-    nav {
-      background: #444;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 10px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .section {
-      padding: 50px 20px;
-      text-align: center;
-    }
-
-    .section h2 {
-      font-size: 2em;
-      margin-bottom: 20px;
-    }
-
-    .about {
-      max-width: 800px;
-      margin: auto;
-      font-size: 1.1em;
-      line-height: 1.6;
-    }
-
-    .services {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-    }
-
-    .service-card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      padding: 20px;
-      width: 300px;
-    }
-
-    .service-card img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-
-    .slider {
-      max-width: 90%;
-      margin: 0 auto;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .slides {
-      display: flex;
-      width: 300%;
-      transition: transform 0.5s ease-in-out;
-    }
-
-    .slide {
-      width: 100%;
-      flex-shrink: 0;
-    }
-
-    .slide img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-    }
-
-    .slider-buttons {
-      text-align: center;
-      margin-top: 10px;
-    }
-
-    .slider-buttons button {
-      padding: 10px 15px;
-      margin: 0 5px;
-      border: none;
-      background: #444;
-      color: white;
-      cursor: pointer;
-    }
-
-    .testimonials {
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .testimonial {
-      background: #fff;
-      margin: 20px auto;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      font-style: italic;
-    }
-
-    footer {
-      background: #222;
-      color: white;
-      text-align: center;
-      padding: 30px 20px;
-    }
-
-    .whatsapp-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25d366;
-      color: white;
-      border-radius: 50%;
-      padding: 15px;
-      font-size: 24px;
-      text-align: center;
-      z-index: 1000;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      text-decoration: none;
-    }
-
-    .whatsapp-button:hover {
-      background-color: #20b557;
-    }
-
-    @media (max-width: 768px) {
-      .services {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KHD INTERIOR - Interior Design Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 15px;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        /* About Section */
+        #about {
+            background: var(--light);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-content h3 {
+            color: var(--primary);
+        }
+        
+        /* Portfolio Section */
+        #portfolio {
+            background: var(--light);
+        }
+        
+        .portfolio-slider {
+            margin: 0 auto;
+            max-width: 1000px;
+        }
+        
+        .portfolio-slide {
+            padding: 0 10px;
+        }
+        
+        .portfolio-slide img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .slick-dots {
+            bottom: -40px;
+        }
+        
+        .slick-dots li button:before {
+            font-size: 12px;
+            color: var(--secondary);
+        }
+        
+        .slick-dots li.slick-active button:before {
+            color: var(--secondary);
+        }
+        
+        /* Testimonials Section */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 60px;
+            color: rgba(231, 76, 60, 0.2);
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-content {
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+            color: var(--secondary);
+        }
+        
+        .author-info p {
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        /* Contact Section */
+        #contact {
+            background: var(--light);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        .contact-text h3 {
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            transition: var(--transition);
+        }
+        
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: scale(1.1);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .social-links a {
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 40px;
+                transition: var(--transition);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .portfolio-slide img {
+                height: 300px;
+            }
+        }
+    </style>
 </head>
 <body>
-
-  <header>
-    <h1>KHD INTERIOR</h1>
-    <p>Your dream space, designed in 3D with custom elegance</p>
-  </header>
-
-  <nav>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#work">Our Work</a>
-    <a href="#testimonials">Testimonials</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <section id="about" class="section">
-    <h2>About Us</h2>
-    <div class="about">
-      <p>KHD INTERIOR is a Mumbai-based interior design firm offering 3D interior visualizations, custom furniture, and wall painting services. We aim to transform ordinary spaces into extraordinary environments tailored to your style and budget. Whether you're building your dream home or renovating a room, we provide creative solutions with attention to detail and personalized service.</p>
-    </div>
-  </section>
-
-  <section id="services" class="section">
-    <h2>Our Services</h2>
-    <div class="services">
-      <div class="service-card">
-        <img src="https://cdn.pixabay.com/photo/2020/11/13/08/35/living-room-5734262_1280.jpg" alt="3D Interior Design">
-        <h3>3D Interior Design</h3>
-        <p>Get a realistic preview of your space before making any changes with our professional 3D design services.</p>
-      </div>
-      <div class="service-card">
-        <img src="https://cdn.pixabay.com/photo/2017/08/06/00/06/chairs-2583031_1280.jpg" alt="Custom Furniture">
-        <h3>Custom Furniture</h3>
-        <p>Tailor-made furniture pieces that reflect your style and perfectly fit your space and budget.</p>
-      </div>
-      <div class="service-card">
-        <img src="https://cdn.pixabay.com/photo/2016/11/19/14/00/painting-1834642_1280.jpg" alt="Wall Painting">
-        <h3>Wall Painting</h3>
-        <p>Express your personality with unique wall painting designs from our skilled artists at affordable prices.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="work" class="section">
-    <h2>Our Work</h2>
-    <div class="slider">
-      <div class="slides" id="slides">
-        <div class="slide">
-          <img src="https://cdn.pixabay.com/photo/2016/11/19/14/00/painting-1834642_1280.jpg" alt="Work 1">
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">KHD <span>INTERIOR</span></a>
+            <div class="hamburger">☰</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
-        <div class="slide">
-          <img src="https://cdn.pixabay.com/photo/2020/11/13/08/35/living-room-5734262_1280.jpg" alt="Work 2">
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Transform Your Space with KHD INTERIOR</h1>
+                <p>We create beautiful, functional interiors tailored to your style and budget. From 3D designs to custom furniture, we bring your vision to life.</p>
+                <a href="#contact" class="btn">Get a Free Quote</a>
+            </div>
         </div>
-        <div class="slide">
-          <img src="https://cdn.pixabay.com/photo/2017/08/06/00/06/chairs-2583031_1280.jpg" alt="Work 3">
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Story</h3>
+                    <p>KHD INTERIOR was founded in 2015 with a passion for creating beautiful, functional spaces that reflect our clients' personalities and lifestyles. Our team of experienced designers and craftsmen work together to deliver exceptional results.</p>
+                    <p>We believe that everyone deserves to live and work in spaces that inspire them. That's why we offer high-quality interior design services at reasonable prices, making great design accessible to more people.</p>
+                    <p>Our mission is to transform ordinary spaces into extraordinary environments that enhance quality of life and reflect the unique character of each client.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg" alt="About KHD INTERIOR">
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="slider-buttons">
-      <button onclick="moveSlide(0)">1</button>
-      <button onclick="moveSlide(1)">2</button>
-      <button onclick="moveSlide(2)">3</button>
-    </div>
-  </section>
+    </section>
 
-  <section id="testimonials" class="section">
-    <h2>Testimonials</h2>
-    <div class="testimonials">
-      <div class="testimonial">"KHD INTERIOR turned my house into a beautiful home. Their 3D designs made everything clear before starting. Loved their work!" – Riya M.</div>
-      <div class="testimonial">"Professional, creative, and affordable! I highly recommend their custom furniture service." – Arjun K.</div>
-      <div class="testimonial">"Amazing wall painting designs! Their team is very talented." – Sneha D.</div>
-    </div>
-  </section>
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.pexels.com/photos/37347/office-sitting-room-executive-sitting.jpg" alt="3D Interior Design">
+                    </div>
+                    <div class="service-content">
+                        <h3>3D Interior Design</h3>
+                        <p>Visualize your space before implementation with our state-of-the-art 3D interior design services. We create photorealistic renderings that help you make confident design decisions.</p>
+                        <a href="#contact" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg" alt="Custom Furniture">
+                    </div>
+                    <div class="service-content">
+                        <h3>Custom Furniture</h3>
+                        <p>Our skilled craftsmen create bespoke furniture pieces tailored to your space, style, and needs. From unique statement pieces to functional storage solutions, we bring your ideas to life.</p>
+                        <a href="#contact" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.pexels.com/photos/2062431/pexels-photo-2062431.jpeg" alt="Wall Painting">
+                    </div>
+                    <div class="service-content">
+                        <h3>Wall Painting Services</h3>
+                        <p>Transform your walls with our professional painting services. We offer expert color consultation, surface preparation, and flawless application using premium quality paints.</p>
+                        <a href="#contact" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="contact" class="section">
-    <h2>Contact Us</h2>
-    <p><strong>Email:</strong> contact@khdinterior.com</p>
-    <p><strong>Phone:</strong> +91-9876543210</p>
-    <p><strong>Location:</strong> Mumbai, India</p>
-  </section>
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="container">
+            <h2>Our Work</h2>
+            <div class="portfolio-slider">
+                <div class="portfolio-slide">
+                    <img src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg" alt="Modern Living Room">
+                </div>
+                <div class="portfolio-slide">
+                    <img src="https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg" alt="Contemporary Kitchen">
+                </div>
+                <div class="portfolio-slide">
+                    <img src="https://images.pexels.com/photos/2082087/pexels-photo-2082087.jpeg" alt="Elegant Bedroom">
+                </div>
+                <div class="portfolio-slide">
+                    <img src="https://images.pexels.com/photos/1571463/pexels-photo-1571463.jpeg" alt="Home Office Design">
+                </div>
+                <div class="portfolio-slide">
+                    <img src="https://images.pexels.com/photos/271816/pexels-photo-271816.jpeg" alt="Dining Area">
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    <p>&copy; 2025 KHD INTERIOR. All rights reserved.</p>
-  </footer>
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>KHD INTERIOR transformed our outdated living room into a modern, functional space we absolutely love. Their attention to detail and creative solutions exceeded our expectations.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg" alt="Sarah Johnson">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Homeowner</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>The custom bookshelves they designed for our office are not only beautiful but incredibly functional. The team was professional, punctual, and a pleasure to work with.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg" alt="Michael Chen">
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <p>Small Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>Their 3D renderings helped us visualize our restaurant renovation before committing to the design. The final result matched the renderings perfectly - we couldn't be happier!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://images.pexels.com/photos/712521/pexels-photo-712521.jpeg" alt="Aisha Patel">
+                        </div>
+                        <div class="author-info">
+                            <h4>Aisha Patel</h4>
+                            <p>Restaurant Owner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- WhatsApp Chat Button -->
-  <a class="whatsapp-button" href="https://wa.me/919876543210" target="_blank" title="Chat with us on WhatsApp">
-    🟢
-  </a>
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-text">
+                            <h3>Email</h3>
+                            <p>info@khdinterior.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-text">
+                            <h3>Phone</h3>
+                            <p>+91-7984919189</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-text">
+                            <h3>Location</h3>
+                            <p>123 Design Street, Creative District, Mumbai, India</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div class="contact-text">
+                            <h3>Working Hours</h3>
+                            <p>Monday - Friday: 9AM - 6PM<br>Saturday: 10AM - 4PM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    function moveSlide(index) {
-      const slides = document.getElementById("slides");
-      slides.style.transform = `translateX(-${index * 100}%)`;
-    }
-  </script>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">KHD <span>INTERIOR</span></div>
+                <p>Transforming spaces, enhancing lives since 2015</p>
+                <div class="social-links">
+                    <a href="#">📱</a>
+                    <a href="#">📘</a>
+                    <a href="#">📸</a>
+                    <a href="#">💼</a>
+                </div>
+                <p>&copy; 2023 KHD INTERIOR. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/917984919189" class="whatsapp-btn" target="_blank">💬</a>
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        // Mobile Navigation
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+        
+        // Portfolio Slider
+        $(document).ready(function(){
+            $('.portfolio-slider').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                centerMode: true,
+                variableWidth: true,
+                autoplay: true,
+                autoplaySpeed: 3000,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false,
+                            centerMode: true,
+                            centerPadding: '40px',
+                            slidesToShow: 1
+                        }
+                    }
+                ]
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will contact you soon.');
+            this.reset();
+        });
+    </script>
 </body>
-  </html>
-  
+</html>
